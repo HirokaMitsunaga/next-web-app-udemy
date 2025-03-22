@@ -5,6 +5,9 @@ export interface Task {
   name: string;
 }
 
+const sleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
 const tasks: Task[] = [
   {
     id: 1,
@@ -17,6 +20,7 @@ const tasks: Task[] = [
 ];
 
 export const GET = async () => {
+  await sleep(3000);
   return NextResponse.json({ tasks }, { status: 200 });
 };
 
